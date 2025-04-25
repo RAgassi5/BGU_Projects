@@ -1,0 +1,302 @@
+#include "Jerry.h"
+
+/*
+ *this function creates a new instance of a Planet
+ */
+Planet *create_new_planet(char *Name, float x, float y, float z) {
+    if (Name == NULL) {
+        return NULL;
+    }
+
+    Planet *Planet_instance = (Planet *) malloc(sizeof(Planet));
+    if (Planet_instance == NULL) {
+        return NULL;
+    }
+    Planet_instance->name = (char *) malloc(strlen(Name) + 1);
+    if (Planet_instance->name == NULL) {
+        free(Planet_instance);
+        return NULL;
+    }
+    strcpy(Planet_instance->name, Name);
+    Planet_instance->x = x;
+    Planet_instance->y = y;
+    Planet_instance->z = z;
+    return Planet_instance;
+}
+
+/*
+ *a function to delete an instance of a planet
+ */
+status delete_planet(Planet *Planet_instance) {
+    if (Planet_instance == NULL) {
+        return failure;
+    }
+    free(Planet_instance->name);
+    free(Planet_instance);
+    return success;
+}
+
+/*
+ *a printing function for an instance of a planet
+ */
+status print_Planet(Planet *planet) {
+    if (planet == NULL) {
+        return failure;
+    }
+    printf("Planet : %s (%.2f,%.2f,%.2f) \n", planet->name, planet->x, planet->y, planet->z);
+    return success;
+}
+
+bool compare_planets(Planet *planet1, Planet *planet2) {
+    if (planet1 == NULL || planet2 == NULL) {
+        return false;
+    }
+    if (strcmp(planet1->name, planet2->name) == 0) {
+        return true;
+    }
+    return false;
+}
+
+/*
+ *this function creates a new instance of an Origin
+ *Returns: a pointer to an Origin instance
+ */
+Origin *create_new_origin(char *dimension, Planet *planetName) {
+    if (dimension == NULL || planetName == NULL) {
+        return NULL;
+    }
+    Origin *Origin_instance = (Origin *) malloc(sizeof(Origin));
+    if (Origin_instance == NULL) {
+        return NULL;
+    }
+    Origin_instance->dimension = (char *) malloc(strlen(dimension) + 1);
+    if (Origin_instance->dimension == NULL) {
+        free(Origin_instance);
+        return NULL;
+    }
+    strcpy(Origin_instance -> dimension, dimension);
+
+    Planet *current_planet = planetName;
+    Origin_instance->home_planet = current_planet;
+
+    return Origin_instance;
+}
+
+//a function to delete an instance of Origin
+status delete_origin(Origin *Origin_instance) {
+    if (Origin_instance == NULL) {
+        return failure;
+    }
+    free(Origin_instance->dimension);
+    free(Origin_instance);
+    return success;
+}
+
+
+/*
+ the function creates a new instance of Jerry and adds it to an array
+ Returns: a pointer to an instance of Jerry
+*/
+Jerry *create_new_Jerry(char *ID, short happiness_level, char *dimension, Planet *planetName) {
+    if (ID == NULL || planetName == NULL || dimension == NULL) {
+        return NULL;
+    }
+
+    Jerry *Jerry_instance = (Jerry *) malloc(sizeof(Jerry)); //create memory for new instance of Jerry
+
+    //check if the memory assignment was successful
+    if (Jerry_instance == NULL) {
+        return NULL;
+    }
+    Jerry_instance->ID = malloc(strlen(ID) + 1); //create memory for Jerry's id
+    if (Jerry_instance->ID == NULL) {
+        free(Jerry_instance); //if there was a problem freeing up space we will delete the new instance
+        return NULL;
+    }
+    strcpy(Jerry_instance->ID, ID); //assign the inputted ID to the new Jerry instance
+    Origin *Origin_instance = create_new_origin(dimension, planetName);
+    if (Origin_instance == NULL) {
+        free(Jerry_instance->ID);
+        free(Jerry_instance);
+        return NULL;
+    }
+
+    Jerry_instance->origin = Origin_instance;
+    Jerry_instance->happiness_level = happiness_level; //set the inputted happiness level to the new Jerry instance
+    Jerry_instance->physical_characteristics_array_size = 0; //set thr array's size to 0
+    Jerry_instance->physical_characteristics_array = NULL;
+    return Jerry_instance;
+}
+
+
+/*
+ *a function that creates an instance of a physical characteristic
+ *returns a pointer to a physical characteristic
+ */
+PhysicalCharacteristics *create_new_physical_characteristics(char *name, float value) {
+    if (name == NULL) {
+        return NULL;
+    }
+
+    PhysicalCharacteristics *PhysicalCharacteristics_instance = (PhysicalCharacteristics *) malloc(
+        sizeof(PhysicalCharacteristics));
+    if (PhysicalCharacteristics_instance == NULL) {
+        return NULL;
+    }
+    PhysicalCharacteristics_instance->characteristic_name = malloc(strlen(name) + 1);
+    if (PhysicalCharacteristics_instance->characteristic_name == NULL) {
+        free(PhysicalCharacteristics_instance);
+        return NULL;
+    }
+    strcpy(PhysicalCharacteristics_instance -> characteristic_name, name);
+    PhysicalCharacteristics_instance->characteristic_value = value;
+    return PhysicalCharacteristics_instance;
+}
+
+/*
+ *a function that looks for a specific characteristic in an instance of Jerry
+ */
+bool search_Characteristic(Jerry *Jerry_instance, char *characteristic_name) {
+    if (Jerry_instance == NULL || characteristic_name == NULL) {
+        return false;
+    }
+    for (int i = 0; i < (Jerry_instance->physical_characteristics_array_size); i++) {
+        if (strcmp(characteristic_name, Jerry_instance->physical_characteristics_array[i]->characteristic_name) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/*
+ *a function that adds a new characteristic to an instance of Jerry
+ */
+status add_characteristic_to_Jerry(Jerry *Jerry_instance, char *characteristic_name, float value) {
+    if (Jerry_instance == NULL || characteristic_name == NULL) {
+        return failure;
+    }
+    PhysicalCharacteristics *new_characteristic = create_new_physical_characteristics(characteristic_name, value);
+    if (new_characteristic == NULL) {
+        return failure;
+    }
+    PhysicalCharacteristics **characteristics_array = realloc(Jerry_instance->physical_characteristics_array,
+                                                              (Jerry_instance->physical_characteristics_array_size + 1)
+                                                              * sizeof(PhysicalCharacteristics *));
+    if (characteristics_array == NULL) {
+        free(new_characteristic->characteristic_name);
+        free(new_characteristic);
+        return failure;
+    }
+    Jerry_instance->physical_characteristics_array = characteristics_array;
+    Jerry_instance->physical_characteristics_array[Jerry_instance->physical_characteristics_array_size] =
+            new_characteristic;
+    Jerry_instance->physical_characteristics_array_size++;
+
+
+    return success;
+}
+
+/*
+ *a function that deletes a given characteristic from an instance of Jerry by its name
+ */
+status delete_characteristic_from_Jerry(Jerry *Jerry_instance, char *characteristic_name) {
+    if (Jerry_instance == NULL || characteristic_name == NULL) {
+        return failure;
+    }
+
+    for (int i = 0; i < Jerry_instance->physical_characteristics_array_size; i++) {
+        if (strcmp(Jerry_instance->physical_characteristics_array[i]->characteristic_name, characteristic_name) == 0) {
+            free(Jerry_instance->physical_characteristics_array[i]->characteristic_name);
+            free(Jerry_instance->physical_characteristics_array[i]);
+            //move each object to the left, so we can resize the array and free up space properly
+            for (int j = i; j < Jerry_instance->physical_characteristics_array_size - 1; j++) {
+                Jerry_instance->physical_characteristics_array[j] = Jerry_instance->physical_characteristics_array[
+                    j + 1];
+            }
+            //need to check that the list is not empty
+            if ((Jerry_instance->physical_characteristics_array_size - 1) > 0) {
+                PhysicalCharacteristics **temp_array = realloc(Jerry_instance->physical_characteristics_array,
+                                                               (Jerry_instance->physical_characteristics_array_size - 1)
+                                                               * sizeof(PhysicalCharacteristics));
+                if (temp_array == NULL) {
+                    return failure;
+                }
+                Jerry_instance->physical_characteristics_array = (PhysicalCharacteristics **) temp_array;
+            }
+            //if the array is empty we'll free up the space and set it to NULL
+            else {
+                free(Jerry_instance->physical_characteristics_array);
+                Jerry_instance->physical_characteristics_array = NULL;
+            }
+            Jerry_instance->physical_characteristics_array_size--;
+            return success;
+        }
+    }
+    return failure;
+}
+
+/*
+ *a function that prints out information about an instance of Jerry
+ */
+status print_Jerry(Jerry *Jerry_instance) {
+    if (Jerry_instance == NULL) {
+        return failure;
+    }
+
+    printf("Jerry , ID - %s : \n", Jerry_instance->ID);
+    printf("Happiness level : %d \n", Jerry_instance->happiness_level);
+    printf("Origin : %s \n", Jerry_instance->origin->dimension);
+    print_Planet(Jerry_instance->origin->home_planet);
+    if (Jerry_instance->physical_characteristics_array_size > 0) {
+        printf("Jerry's physical Characteristics available : \n\t");
+        for (int i = 0; i < Jerry_instance->physical_characteristics_array_size; i++) {
+            printf("%s : %.2f", Jerry_instance->physical_characteristics_array[i]->characteristic_name,
+                   Jerry_instance->physical_characteristics_array[i]->characteristic_value);
+            if (i != Jerry_instance->physical_characteristics_array_size - 1) {
+                printf(" , ");
+            } else {
+                printf(" \n");
+            }
+        }
+    }
+    return success;
+}
+
+/*
+ *a function to delete an instance of Jerry
+ */
+
+status delete_Jerry(Jerry *Jerry_instance) {
+    if (Jerry_instance == NULL) {
+        return failure;
+    }
+
+    for (int i = 0; i < Jerry_instance->physical_characteristics_array_size; i++) {
+        free(Jerry_instance->physical_characteristics_array[i]->characteristic_name);
+        free(Jerry_instance->physical_characteristics_array[i]);
+    }
+    free(Jerry_instance->physical_characteristics_array);
+    delete_origin(Jerry_instance->origin);
+    free(Jerry_instance->ID);
+    free(Jerry_instance);
+    return success;
+}
+
+//a function that compares two instances of Jerry
+bool compare_Jerry(Jerry *Jerry1, Jerry *Jerry2) {
+    if (Jerry1 == NULL || Jerry2 == NULL) {
+        return false;
+    }
+    if (strcmp(Jerry1->ID, Jerry2->ID) == 0) {
+        return true;
+    }
+    return false;
+}
+
+//a function that makes a "copy" of an instance of Jerry
+Jerry *copy_Jerry(Jerry *Jerry_instance) {
+    if (Jerry_instance == NULL) {
+        return NULL;
+    }
+    return Jerry_instance;
+}

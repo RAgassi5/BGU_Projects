@@ -1,0 +1,3 @@
+/Users/roiiagassi/Documents/BGU/BGU_Projects/hw_assignement2/cmake-build-debug/CMakeFiles/hw_assignemnt2.dir
+/Users/roiiagassi/Documents/BGU/BGU_Projects/hw_assignement2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/roiiagassi/Documents/BGU/BGU_Projects/hw_assignement2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

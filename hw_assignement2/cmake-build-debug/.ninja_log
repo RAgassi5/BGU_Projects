@@ -1,0 +1,6 @@
+# ninja log v6
+1	147	1745587629303983056	build.ninja	51540a7f4dc74db6
+116	202	1734097621420110877	hw_assignemnt1	92d948e9e9c1d62a
+2	116	1745587701104669399	CMakeFiles/hw_assignemnt2.dir/Jerry.c.o	acfaf83c91fad283
+3	122	1745587701105140444	CMakeFiles/hw_assignemnt2.dir/ManageJerries.c.o	9ed8c91a73b3a0c6
+122	215	1745587701224091284	hw_assignemnt2	238dcff8449991db

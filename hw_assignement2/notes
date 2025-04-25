@@ -1,0 +1,262 @@
+  /* char *args[] = {
+        "./ManageJerries", "3", "4",
+        "/Users/roiiagassi/Documents/BGU/Year2/CLion/hw_assignemnt1/configuration_file_3.txt"
+    };
+    argc = 4;
+    argv = args;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*Jerry_instance->origin.dimension = malloc(strlen(Origin_instance->dimension) + 1);
+    if (Jerry_instance->origin.dimension == NULL) {
+        free(Jerry_instance->ID);
+        delete_origin(Origin_instance);
+        free(Jerry_instance);
+        return NULL;
+    }
+
+    strcpy(Jerry_instance->origin.dimension, Origin_instance->dimension);
+    Jerry_instance->origin.home_planet = Origin_instance->home_planet;
+    delete_origin(Origin_instance);*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Jerry_instance->origin.dimension = malloc(strlen(Origin_instance->dimension) + 1);
+    if (Jerry_instance->origin.dimension == NULL) {
+        free(Jerry_instance->ID);
+        delete_origin(Origin_instance);
+        free(Jerry_instance);
+        return NULL;
+    }
+    strcpy(Jerry_instance->origin.dimension, Origin_instance->dimension);
+    Jerry_instance->origin.home_planet = Origin_instance->home_planet;
+    delete_origin(Origin_instance); // Free Origin_instance after transferring data
+
+
+
+
+
+
+
+
+
+
+/*
+ a function that adds to an array all the Jerries created
+ */
+void add_Jerry_to_Array(Jerry * new_jerry) {
+    if (Jerry_Array == NULL) {
+        Jerry_Array = malloc(sizeof(Jerry *));
+        if (Jerry_Array == NULL) {
+            printf("Memory Problem");
+            return;
+        }
+        Jerry_Array[0] = new_jerry;
+        Jerry_Array_Length = 1;
+    }
+    else {
+        Jerry **temp_Array = realloc(Jerry_Array, (Jerry_Array_Length + 1) * sizeof(Jerry *)); //checks if a new item can be added to the array and frees up memory
+        if (temp_Array == NULL) {
+            printf("Memory Problem");
+            return;
+        }
+        Jerry_Array = temp_Array;           //if realloc isn't null we'll update our original array
+        Jerry_Array[Jerry_Array_Length] = new_jerry;  //add the new instance to the array
+        Jerry_Array_Length++;       //increase the array's size
+    }
+}
+
+--------------------------------------------------------------------------------
+
+void add_planet_to_Array(Planet * new_planet) {
+    if (Planet_Array == NULL) {
+        Planet_Array = malloc(sizeof(Planet*));
+        if (Planet_Array == NULL) {
+            printf("Memory Problem");
+            return;
+        }
+        Planet_Array[0] = new_planet;
+        Planet_Array_Length = 1;
+
+    }
+    else {
+
+    }
+
+}
+---------------------------------------------------------------------------------
+status make_Space(void * item_to_check) {
+    if (item_to_check == NULL) {
+        return failure;
+    }
+    return success;
+}
+---------------------------------------------------------------------
+
+
+/*
+ *parameter 1: an address of a dynamic array
+ *parameter 2: a pointer to that array's length counter
+ *parameter 3: the item to be added to that array
+ *this is a generic function that adds an item to a given dynamic array
+ */
+
+
+/*
+ status add_to_Array(void ***array_ptr, int *array_length, void *item_to_be_added) {
+    if (*array_ptr == NULL) {
+        *array_ptr = (void *) malloc(sizeof(void *));
+        if (*array_ptr == NULL) {
+            return failure;
+        }
+        array_ptr[0] = item_to_be_added;
+        *array_length = 1;
+    } else {
+        void **temp = realloc(*array_ptr, (*array_length + 1) * sizeof(void *));
+        if (temp == NULL) {
+            return failure;
+        }
+        *array_ptr = temp;
+        array_ptr[*array_length] = item_to_be_added;
+        *array_length = *array_length + 1;
+    }
+    return success;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  int number_of_planets = atoi(argv[1]);
+    int number_of_jerries = atoi(argv[2]);
+
+    Planet *planet_array[number_of_planets];
+    Jerry *jerry_array[number_of_jerries];
+    char * file_path = argv[3];
+    FILE *config_File = fopen(file_path, "r");
+    if (config_File == NULL) {
+        return 0;
+    }
+    //TODO: fix pointer to char
+    char current_line[300];
+    while (fgets(current_line, sizeof(current_line), config_File)) {
+        current_line[strcspn(current_line, "\n")] = 0;
+        if (strcmp(current_line, "Planets") == 0) {
+            int i = 0;
+            fgets(current_line, sizeof(current_line), config_File);
+            current_line[strcspn(current_line, "\n")] = 0;
+            while (strcmp(current_line, "Jerries") != 0) {
+                char *token = strtok(current_line, ",");
+                char *name_token = token;
+                token = strtok(NULL, ",");
+                float x = atof(token);
+                token = strtok(NULL, ",");
+                float y = atof(token);
+                token = strtok(NULL, "\n");
+                float z = atof(token);
+
+                Planet * new_planet_instance = create_new_planet(name_token, x, y, z);
+                if (new_planet_instance != NULL) {
+                    planet_array[i] = new_planet_instance;
+                    i++;
+                    }
+                fgets(current_line, sizeof(current_line), config_File);
+                current_line[strcspn(current_line, "\n")] = 0;
+
+            }
+        }
+        if (strcmp(current_line, "Jerries") == 0) {
+            int j = 0;
+            while (fgets(current_line, sizeof(current_line), config_File)) {
+                int tab_char_location = strcspn(current_line, "\t");
+//TODO: might be a problem
+                if (tab_char_location == 0) {
+                   strtok(current_line, "\t");
+                    //char *token = strtok(current_line, "\t");
+                    char * token= strtok(current_line,":");
+                    char *characteristic_token = token;
+                    token= strtok(NULL, "\n");
+                    float value = atof(token);
+
+                    add_characteristic_to_Jerry(jerry_array[j - 1], characteristic_token, value);
+                } else {
+                    char *token = strtok(current_line, ",");
+                    char *ID_token = token;
+                    token = strtok(NULL, ",");
+                    char *dimension_token = token;
+                    token = strtok(NULL, ",");
+                    char *planet_name_token = token;
+                    token = strtok(NULL, "\n");
+                    double happiness_token = atof(token);
+
+                    for (int k = 0; k < number_of_planets; k++) {
+                        if (strcmp(planet_array[k]->name, planet_name_token) == 0) {
+                            Jerry *new_instance = create_new_Jerry(ID_token, happiness_token, dimension_token,
+                                                                   planet_array[k]);
+                            if (new_instance != NULL) {
+                                jerry_array[j] = new_instance;
+                                j++;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    fclose(config_File);

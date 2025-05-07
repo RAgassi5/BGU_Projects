@@ -1,0 +1,29 @@
+find path:
+   std :: string current_path = to_add->get_RoomPath();
+    int path_length = current_path.length();
+    Room * current_room = &start;
+    for(int i = 0; i < path_length - 1; i++) {
+        int Room_id = current_path[i] - '0';
+        if(current_room->findRoom(Room_id) == false) {
+            current_room->addRoom(to_add);
+        }
+        current_room = &(*current_room)[Room_id];
+    }
+/*
+    int room_number = to_add->get_RoomID();
+    if(current_room->findRoom(room_number) == false) {
+        current_room->addRoom(to_add);
+    }
+
+*/
+    /*
+    for (int i = 0; i < path_length - 1; i++) {
+        char next_roomID = current_path[i];
+        if(current_room->findRoom(next_roomID - '0') == true) {
+            current_room = &(*current_room)[next_roomID - '0'];
+        }
+        else {
+            current_room->addRoomByIndex(to_add);
+        }
+    }
+    */

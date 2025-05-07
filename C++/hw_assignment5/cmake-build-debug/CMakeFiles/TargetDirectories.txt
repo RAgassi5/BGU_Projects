@@ -1,0 +1,3 @@
+/Users/roiiagassi/Documents/BGU/Year2/Advanced Programming/CLion/hw_assignment5/cmake-build-debug/CMakeFiles/hw_assignment5.dir
+/Users/roiiagassi/Documents/BGU/Year2/Advanced Programming/CLion/hw_assignment5/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/roiiagassi/Documents/BGU/Year2/Advanced Programming/CLion/hw_assignment5/cmake-build-debug/CMakeFiles/rebuild_cache.dir

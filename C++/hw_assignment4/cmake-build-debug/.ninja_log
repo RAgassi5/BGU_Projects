@@ -1,0 +1,7 @@
+# ninja log v6
+26	1079	1736505933050093289	CMakeFiles/hw_assignment4.dir/Entity.cpp.o	68ab38414973616d
+24	1077	1736505933047206025	CMakeFiles/hw_assignment4.dir/Room.cpp.o	c879238d7b3716ac
+1130	1234	1736505934153095631	hw_assignment4	4d2265a85af32edb
+26	1129	1736505933049340446	CMakeFiles/hw_assignment4.dir/Game.cpp.o	d58eb9d611c5c42
+20	1176	1736414096769571811	CMakeFiles/hw_assignment4.dir/main.cpp.o	6cdaf82fc4d57b77
+16	177	1737037709431673663	build.ninja	859d629d9d067afb

@@ -1,0 +1,32 @@
+Player (100/100) - 20
+I see you like challenges, by how much do you want to reduce your damage?
+Player (100/100) - 20
+You arrive to an empty room
+You see corridors labeled from 0 to 1. Which one will you choose?
+Player (100/100) - 20
+You sit by the campfire and heal 10 health
+The room continues and opens up to the outside. You won against the dungeon
+Process:         Dungeon [5559]
+Path:            /Users/USER/*/Dungeon
+Load Address:    0x109f8b000
+Identifier:      Dungeon
+Version:         0
+Code Type:       X86-64
+Platform:        macOS
+Parent Process:  leaks [5558]
+
+Date/Time:       2025-01-07 21:06:02.722 +0200
+Launch Time:     2025-01-07 21:06:02.435 +0200
+OS Version:      macOS 15.2 (24C101)
+Report Version:  7
+Analysis Tool:   /usr/bin/leaks
+
+Physical footprint:         1116K
+Physical footprint (peak):  1116K
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0, multi-line stacks
+Process 5559: 183 nodes malloced for 18 KB
+Process 5559: 0 leaks for 0 total leaked bytes.
+

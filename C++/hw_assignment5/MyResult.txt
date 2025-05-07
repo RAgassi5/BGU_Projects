@@ -1,0 +1,51 @@
+Fighter (100/100) - 5
+I see you like challenges, by how much do you want to reduce your damage?
+Fighter (100/100) - 4
+You arrive to an empty room
+You see corridors labeled from 0 to 3. Which one will you choose?
+Fighter (100/100) - 4
+You encounter a smaller dragon
+Dragon (35/35) - 10
+You deal 4 damage to the dragon and leave it with 31 health
+The dragon deals 0 damage to you and leaves you with 100 health
+You deal 4 damage to the dragon and leave it with 27 health
+The dragon deals 5 damage to you and leaves you with 95 health
+You deal 4 damage to the dragon and leave it with 23 health
+The dragon deals 5 damage to you and leaves you with 90 health
+You deal 4 damage to the dragon and leave it with 19 health
+The dragon deals 5 damage to you and leaves you with 85 health
+You deal 4 damage to the dragon and leave it with 15 health
+The dragon deals 5 damage to you and leaves you with 80 health
+You deal 4 damage to the dragon and leave it with 11 health
+The dragon deals 0 damage to you and leaves you with 80 health
+You deal 4 damage to the dragon and leave it with 7 health
+The dragon deals 5 damage to you and leaves you with 75 health
+You deal 4 damage to the dragon and leave it with 3 health
+The dragon deals 5 damage to you and leaves you with 70 health
+You deal 4 damage to the dragon and leave it with 0 health
+You defeat the monster and go on with your journey
+The room continues and opens up to the outside. You won against the dungeon
+Process:         Dungeon [18852]
+Path:            /Users/USER/*/Dungeon
+Load Address:    0x10af60000
+Identifier:      Dungeon
+Version:         0
+Code Type:       X86-64
+Platform:        macOS
+Parent Process:  leaks [18851]
+
+Date/Time:       2025-01-19 19:55:59.750 +0200
+Launch Time:     2025-01-19 19:55:59.443 +0200
+OS Version:      macOS 15.2 (24C101)
+Report Version:  7
+Analysis Tool:   /usr/bin/leaks
+
+Physical footprint:         1148K
+Physical footprint (peak):  1148K
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0, multi-line stacks
+Process 18852: 183 nodes malloced for 18 KB
+Process 18852: 0 leaks for 0 total leaked bytes.
+

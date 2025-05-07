@@ -1,0 +1,47 @@
+Player (100/100) - 20
+I see you like challenges, by how much do you want to reduce your damage?
+Player (100/100) - 20
+You arrive to an empty room
+You see corridors labeled from 0 to 1. Which one will you choose?
+Player (100/100) - 20
+You encounter a smaller monster
+Monster (20/20) - 20
+You deal 20 damage to the monster and leave it with 0 health
+You defeat the monster and go on with your journey
+You see a single corridor ahead of you labeled 0
+Player (100/100) - 20
+You encounter a equally sized monster
+Monster (20/20) - 100
+You deal 20 damage to the monster and leave it with 0 health
+You defeat the monster and go on with your journey
+You see a single corridor ahead of you labeled 0
+Player (100/100) - 20
+You encounter a larger monster
+Monster (100/100) - 100
+You deal 20 damage to the monster and leave it with 80 health
+The monster deals 100 damage to you and leaves you with 0 health
+You lost to the dungeon
+Process:         Dungeon [65879]
+Path:            /Users/USER/*/Dungeon
+Load Address:    0x105f94000
+Identifier:      Dungeon
+Version:         0
+Code Type:       X86-64
+Platform:        macOS
+Parent Process:  leaks [65878]
+
+Date/Time:       2025-01-15 09:36:04.151 +0200
+Launch Time:     2025-01-15 09:36:03.982 +0200
+OS Version:      macOS 15.2 (24C101)
+Report Version:  7
+Analysis Tool:   /usr/bin/leaks
+
+Physical footprint:         1140K
+Physical footprint (peak):  1140K
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0, multi-line stacks
+Process 65879: 183 nodes malloced for 18 KB
+Process 65879: 0 leaks for 0 total leaked bytes.
+

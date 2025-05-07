@@ -1,0 +1,16 @@
+0
+0
+0
+0
+
+
+
+
+/*
+    char *args[] = {
+        "./Dungeon", "100", "20",
+        "/Users/roiiagassi/Documents/BGU/Year2/Advanced Programming/CLion/hw_assignment4/CNFTST.txt"
+    };
+    argc = 4;
+    argv = args;
+    */

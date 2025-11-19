@@ -1,0 +1,19 @@
+# Ignore compiled output
+/out/
+
+# Ignore all IntelliJ config files...
+.idea/
+
+#ignore all mac setting's files
+.DS_store
+
+dev.iml
+
+# ...except important project structure files
+!.idea/modules.xml
+!.idea/misc.xml
+!.idea/vcs.xml
+
+# Include module descriptor
+!*.iml
+

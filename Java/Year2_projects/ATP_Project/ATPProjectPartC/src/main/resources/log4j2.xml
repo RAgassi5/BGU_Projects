@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Appender for generate server -->
+        <RollingFile name="GenerateLog"
+                     fileName="logs/generate.log"
+                     filePattern="logs/generate-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss.SSS} [%t] %-5level %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- Appender for solve server -->
+        <RollingFile name="SolveLog"
+                     fileName="logs/solve.log"
+                     filePattern="logs/solve-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss.SSS} [%t] %-5level %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- Console for the client/model -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} %-5level %c - %msg%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- Logger for generate strategy -->
+        <Logger name="Generate New Maze" level="info" additivity="false">
+            <AppenderRef ref="GenerateLog"/>
+        </Logger>
+
+        <!-- Logger for solve strategy -->
+        <Logger name="Request Maze Solution"  level="info" additivity="false">
+            <AppenderRef ref="SolveLog"/>
+        </Logger>
+
+        <!-- Root logger for client side -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,78 @@
+/* All Buttons share this look */
+.button {
+    -fx-font-family: "Segoe UI Semibold", sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #222;
+    -fx-background-color:
+            linear-gradient(from 0% 0% to 100% 0%, rgba(255,255,255,0.6), rgba(255,255,255,0.2)),
+            linear-gradient(from 0% 100% to 100% 0%, #f0f0f0, #d9d9d9);
+    -fx-background-radius: 25;
+    -fx-padding: 10 25;
+    -fx-effect:
+            dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2),
+            innershadow(gaussian, rgba(0,0,0,0.2), 2, 0.5, 0, 1);
+    -fx-transition:
+            -fx-background-color 0.3s ease,
+            -fx-effect 0.3s ease,
+            -fx-text-fill 0.3s ease;
+}
+
+.button:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 0% to 100% 0%, rgba(255,255,255,0.8), rgba(255,255,255,0.3)),
+            linear-gradient(from 0% 100% to 100% 0%, #fbfbfb, #e0e0e0);
+
+    -fx-effect:
+            dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 3),
+            innershadow(gaussian, rgba(0,0,0,0.15), 2, 0.5, 0, 1);
+}
+
+.button:pressed {
+    -fx-background-color:
+            linear-gradient(from 0% 0% to 100% 0%, rgba(220,220,220,0.9), rgba(200,200,200,0.9)),
+            linear-gradient(from 0% 100% to 100% 0%, #d4d4d4, #bcbcbc);
+
+    -fx-effect:
+            dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1),
+            innershadow(gaussian, rgba(0,0,0,0.4), 4, 0.5, 0, 2);
+    -fx-translate-y: 1px;
+}
+
+/* TextFields are centered and narrow */
+.text-field {
+    -fx-alignment: CENTER;
+    -fx-pref-width: 60px;
+}
+
+/* set the MazeDisplayer with a light gray background */
+#mazeDisplayer {
+    -fx-background-color: #f9f9f9;
+    /* if you wanted a CSS border instead of our Canvas stroke: */
+    /* -fx-border-color: black; -fx-border-width: 1; */
+}
+
+
+/* Main menu title design */
+.menu-title {
+    -fx-font-family: "Bebas Neue", sans-serif;
+    -fx-font-size: 48px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(one-pass-box, black, 8, 0, 0, 2);
+}
+
+/* NBA Menu button styles in the Main Menu */
+.menu-button {
+    -fx-font-family: "Arial Black", sans-serif;
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-background-color: #17408B;
+    -fx-background-radius: 30;
+    -fx-padding: 10 40;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, black, 4, 0, 0, 1);
+}
+
+.menu-button:hover {
+    -fx-background-color: #E13A3E;
+}
+

@@ -1,0 +1,48 @@
+How to Play Race To The Finals
+==============================
+
+Board Markers
+-------------
+• **Start position**
+  Your player icon appears here at the beginning of each maze.
+
+• **Goal position**
+  The NBA Finals trophy marks the exit you must reach.
+
+• **Solution path**
+  A trail of basketballs shows the computed shortest path from start to goal.
+
+Controls
+--------
+• **Arrow keys (← ↑ → ↓)** – move left, up, right, down.
+• **Numeric keypad (4 8 6 2)** – move left, up, right, down.
+• **Diagonal moves (1 7 9 3)** – move down-left, up-left, up-right, down-right.
+• **Mouse drag** – click and drag your player icon to any reachable cell.
+
+Tools & Buttons
+---------------
+• **LeBron James icon** – your avatar in the maze.
+
+• **Solve** (in-game) – display the solution path as basketballs.
+
+• **Save** (in-game) – write the current maze (and your progress) to a file.
+
+• **New Game** (Main Menu) – generate a fresh maze with custom dimensions.
+        **New**: start a brand-new maze.
+        **Load**: open a previously saved maze file.
+
+• **Options** (Main Menu) – view and edit application properties.
+
+• **About** (Main Menu) – see information about this application.
+
+• **Exit** (Main Menu) – quit the game and shut down background servers.
+
+Tips & Tricks
+-------------
+• You can mix keyboard and mouse moves freely.
+• If you get stuck, click **Show Solution** to display the solution route!
+
+Logging
+-------
+• Every time you start a **New Game**, a record is appended to **logs/generate.log**, detailing the client address, maze dimensions, and timestamp.
+• Every time you click **Show Solution**, a record is appended to **logs/solve.log**, including a prompt saying the player asked for a solution and timestamp.

@@ -1,0 +1,8 @@
+15:50:39.882 [JavaFX Application Thread] INFO  Generate New Maze - Client 127.0.0.1:5400 requested GENERATE maze (50×50)
+15:50:48.302 [JavaFX Application Thread] INFO  Generate New Maze - Client 127.0.0.1:5400 requested GENERATE maze (12×9)
+15:50:55.361 [JavaFX Application Thread] INFO  Generate New Maze - Client 127.0.0.1:5400 requested GENERATE maze (1×1)
+15:51:25.759 [JavaFX Application Thread] INFO  Generate New Maze - Client 127.0.0.1:5400 requested GENERATE maze (2×2)
+15:51:42.609 [JavaFX Application Thread] INFO  Generate New Maze - Client 127.0.0.1:5400 requested GENERATE maze (4×4)
+09:23:59.777 [JavaFX Application Thread] INFO  Generate New Maze - Client 192.168.1.127:5400 requested GENERATE maze (50×50)
+09:34:07.395 [JavaFX Application Thread] INFO  Generate New Maze - Client 192.168.1.127:5400 requested GENERATE maze (10×10)
+09:35:18.777 [JavaFX Application Thread] INFO  Generate New Maze - Client 192.168.1.127:5400 requested GENERATE maze (50×50)

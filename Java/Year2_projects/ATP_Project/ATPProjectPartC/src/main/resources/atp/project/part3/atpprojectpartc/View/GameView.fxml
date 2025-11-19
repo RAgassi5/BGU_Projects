@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import atp.project.part3.atpprojectpartc.View.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="atp.project.part3.atpprojectpartc.View.GameController">
+
+    <!-- In-Game menu ("File" + "Return to Main Menu" buttons) -->
+    <top>
+        <HBox spacing="5">
+            <padding><Insets top="0" right="5" bottom="0" left="5"/></padding>
+            <MenuBar>
+                <menus>
+                    <Menu text="File">
+                        <items>
+                            <MenuItem fx:id="menuSave" text="Save" />
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnReturnMenu" text="Main Menu" onAction="#onReturn" />
+        </HBox>
+    </top>
+
+    <!-- Place background picture of maze -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <content>
+                <StackPane alignment="CENTER">
+                    <ImageView fx:id="BGImage"
+                               pickOnBounds="false"
+                               preserveRatio="false"
+                               smooth="false" />
+                    <MazeDisplayer fx:id="mazeDisplayer" />
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Show Solution Button -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="btnShowSolution" text="Show Solution" onAction="#onShowSolution" />
+        </HBox>
+    </bottom>
+</BorderPane>

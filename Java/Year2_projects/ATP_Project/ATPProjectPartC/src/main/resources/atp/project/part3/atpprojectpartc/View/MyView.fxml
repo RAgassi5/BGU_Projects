@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="atp.project.part3.atpprojectpartc.View.MyViewController">
+<stylesheets>
+<URL value="@../styles/app.css"/>
+</stylesheets>
+
+    <!-- Background -->
+    <ImageView fitWidth="800" fitHeight="600" preserveRatio="false" opacity="0.6">
+        <image>
+            <Image url="@../images/MainMenuBG.jpg"/>
+        </image>
+    </ImageView>
+
+    <!-- Dark Overlay -->
+    <Rectangle width="800" height="600" fill="#000000" opacity="0.3"/>
+
+    <!-- Menu -->
+    <VBox spacing="30" alignment="CENTER">
+        <Label text="RACE TO THE FINALS" styleClass="menu-title"/>
+
+        <VBox spacing="15" alignment="CENTER">
+            <Button fx:id="btnNewGame" text="New Game" styleClass="menu-button"/>
+            <Button fx:id="btnOptions" text="Options" styleClass="menu-button"/>
+            <Button fx:id="btnHelp" text="Help" styleClass="menu-button"/>
+            <Button fx:id="btnAbout" text="About" styleClass="menu-button"/>
+            <Button fx:id="btnExitMenu" text="Exit" styleClass="menu-button"/>
+        </VBox>
+
+        <!-- Basketball Icon -->
+        <ImageView fx:id="ballIcon" fitWidth="50" fitHeight="50">
+            <image>
+                <Image url="@../images/basketball3.png"/>
+            </image>
+        </ImageView>
+    </VBox>
+
+</StackPane>

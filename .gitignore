@@ -1,1 +1,68 @@
 .idea/
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+build/
+out/
+
+# C / C++
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+*.dSYM/
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+Makefile
+
+# Bash / scripts
+*.log
+
+# General build/cache/temp files
+tmp/
+temp/
+.cache/
+*.tmp
+*.swp
+*.swo
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
